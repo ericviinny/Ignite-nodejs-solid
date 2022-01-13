@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SOLID Documentation",
+    "description": "This is an documentation about SOLID EXAM",
+    "version": "1.0.0",
+    "contact": {
+      "email": "ericvnascimento10@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Cria um novo usuário.",
+        "description": "Cria um novo usuário.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "Nome do usuário",
+                "email": "E-mail do usuário à ser criado"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "SDFH2340989FDS234IDFS9874F",
+                  "name": "Eric",
+                  "email": "usuario@email.com",
+                  "admin": false,
+                  "created_at": "2022-01-13T10:00.000Z",
+                  "updated_at": "2022-01-13T10:00.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "E-mail já esta sendo utilizado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Este e-mail já esta em uso."
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "List all users",
+        "description": "List all users",
+        "parameters": [
+          {
+            "name": "user_id",
+            "description": "user_id",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": "SDFH2340989FDS234IDFS9874F",
+                    "name": "Eric",
+                    "email": "usuario@email.com",
+                    "admin": false,
+                    "created_at": "2022-01-13T10:00.000Z",
+                    "updated_at": "2022-01-13T10:00.000Z"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
